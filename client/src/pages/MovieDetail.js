@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useTitle } from "../hooks/useTitle";
 import Backup from "../assets/images/backup.png";
+import { BASE_URL } from "../config";
 
 export const MovieDetail = () => {
   const params = useParams();
@@ -16,7 +17,7 @@ export const MovieDetail = () => {
 
   useEffect(() => {
     async function fetchMovie() {
-      const response = await fetch(`/api/movie/${params.id}`);
+      const response = await fetch(`${BASE_URL}/api/movie/${params.id}`);
       const json = await response.json();
       setMovie(json);
       console.log(json);

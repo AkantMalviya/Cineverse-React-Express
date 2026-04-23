@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { BASE_URL } from "../config";
 
 export const useFetch = (apiPath, queryTerm = "") => {
   const [data, setData] = useState([]);
@@ -9,9 +10,9 @@ export const useFetch = (apiPath, queryTerm = "") => {
         let url = "";
 
         if (queryTerm) {
-          url = `/api/search?q=${queryTerm}`;
+          url = `${BASE_URL}/api/search?q=${queryTerm}`;
         } else {
-          url = apiPath; // e.g. /api/movies/popular
+          url = `${BASE_URL}${apiPath}`; // e.g. /api/movies/popular
         }
 
         const response = await fetch(url);
