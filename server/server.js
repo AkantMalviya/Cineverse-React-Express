@@ -5,12 +5,15 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  }),
+);
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 const BASE_URL = "https://api.themoviedb.org/3";
-
-console.log("API KEY:", process.env.TMDB_API_KEY);
 
 // Home Page
 app.get("/", (req, res) => {
